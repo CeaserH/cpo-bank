@@ -1,8 +1,7 @@
 package com.cpo.bank.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,30 +11,21 @@ public class User {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private final String firstName;
-	private final String lastName;
-	private final String email;
-	private final int userType;
+	@Column
+	private int userid;
+	@Column
+	private String firstName;
+	@Column
+	private String lastName;
+	@Column
+	private String email;
+	@Column
+	private int userType;
 	
 	
 	
-	public User(int id, String firstName, String lastName, String email, int userType) {
-		super();
-		
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.userType = userType;
-		// TODO Auto-generated constructor stub
-	}
-	public long getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+	public int getUserId() {
+		return userid;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -48,6 +38,25 @@ public class User {
 	}
 	public int getUserType() {
 		return userType;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
 	}
 	
 	

@@ -46,7 +46,7 @@ public class UserController {
 	@PostMapping("/user")
 	private int saveUser(@RequestBody User user) {
 		userService.saveOrUpdate(user);
-		return (int) user.getId();
+		return (int) user.getUserId();
 	}
 	
 	// update a user details
