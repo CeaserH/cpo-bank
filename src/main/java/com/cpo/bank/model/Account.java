@@ -1,18 +1,16 @@
 package com.cpo.bank.model;
 
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import java.util.Set;
+
+import javax.persistence.*;
+
 
 @Entity
 @Table
 public class Account {
 	
+	//AccountInfo
 	@Id
 	@Column
 	private long accountID;
@@ -21,6 +19,14 @@ public class Account {
 	@Column
 	private String accountStatus;
 	
+	//AccountID is foreign key
+	@OneToMany(mappedBy="account")
+	private Set<Transaction> transactions;
+	
+	@OneToMany(mappedBy="account")
+	private Set<Loan> loans;
+	
+	//CustomerInfo
 	@Column
 	private String customerName;
 	@Column
@@ -34,12 +40,7 @@ public class Account {
 	@Column
 	private String customerGender;
 	
-	@OneToMany(mappedBy="check", fetch = FetchType.LAZY)
-	private List<Check> checks;
-	
-	@OneToMany(mappedBy="slip", fetch=FetchType.LAZY)
-	private List<Slip> slips;
-	
+
 	
 	public long getAccountID() {
 		return accountID;
@@ -59,6 +60,17 @@ public class Account {
 	public void setAccountStatus(String accountStatus) {
 		this.accountStatus = accountStatus;
 	}
+	
+	
+	
+	public Set<Transaction> getTransactions() {
+		return transactions;
+	}
+	public void setTransactions(Set<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+	
+	
 	
 	public String getCustomerName() {
 		return customerName;
@@ -96,19 +108,6 @@ public class Account {
 	public void setCustomerGender(String customerGender) {
 		this.customerGender = customerGender;
 	}
-	public List<Check> getChecks() {
-		return checks;
-	}
-	public void setChecks(List<Check> checks) {
-		this.checks = checks;
-	}
-	public List<Slip> getSlips() {
-		return slips;
-	}
-	public void setSlips(List<Slip> slips) {
-		this.slips = slips;
-	}
-	
-	
+
 
 }

@@ -1,12 +1,8 @@
 package com.cpo.bank.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+
 
 @Entity
 @Table
@@ -16,17 +12,21 @@ public class Transaction {
 	@Column
 	private long transactionID;
 	
+		//Foreign Key
+	@ManyToOne
+	@JoinColumn(name="accountID", nullable=false)
+	private Account account;
+	
 	//Debit or Credit
+	@Column
 	private String transactionType;
+
 	
 	//Slip or Check
 	private String transactionMethod;
 	
+	@Column
 	private double amount;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="accountID", nullable=false)
-	private Account account;
 	
 	public Transaction() {
 		
