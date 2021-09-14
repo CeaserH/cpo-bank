@@ -1,14 +1,14 @@
 package com.cpo.bank.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Set;
+
+import javax.persistence.*;
 
 @Entity
 @Table
 public class Account {
 	
+	//AccountInfo
 	@Id
 	@Column
 	private long accountID;
@@ -17,6 +17,14 @@ public class Account {
 	@Column
 	private String accountStatus;
 	
+	//AccountID is foreign key
+	@OneToMany(mappedBy="account")
+	private Set<Transaction> transactions;
+	
+	@OneToMany(mappedBy="account")
+	private Set<Loan> loans;
+	
+	//CustomerInfo
 	@Column
 	private String customerName;
 	@Column
@@ -30,6 +38,7 @@ public class Account {
 	@Column
 	private String customerGender;
 	
+
 	
 	public long getAccountID() {
 		return accountID;
@@ -49,6 +58,17 @@ public class Account {
 	public void setAccountStatus(String accountStatus) {
 		this.accountStatus = accountStatus;
 	}
+	
+	
+	
+	public Set<Transaction> getTransactions() {
+		return transactions;
+	}
+	public void setTransactions(Set<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+	
+	
 	
 	public String getCustomerName() {
 		return customerName;
@@ -86,7 +106,5 @@ public class Account {
 	public void setCustomerGender(String customerGender) {
 		this.customerGender = customerGender;
 	}
-	
-	
 
 }
