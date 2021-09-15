@@ -1,6 +1,7 @@
 package com.cpo.bank.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,36 +19,29 @@ public class LoanController {
 	@Autowired
 	LoanService loanService;
 	
-	//get All Accounts
-	@GetMapping("/allEmployees")
+	//get All Loans
+	@GetMapping("/loans/all")
 	private List<Loan> getAllLoans(){
 		return loanService.getAllLoans();
 	}
 	
 	// get Loan by ID
-	@GetMapping("/loan/{loanID}")
+	@GetMapping("/loans/id/{loanID}")
 	private Loan getLoan(@PathVariable("loanID") int loanID) {
 		return loanService.getLoanById(loanID);
 	}
 	
-	//add Loan
-	@PostMapping("/loan")
-	private Loan saveLoan(@RequestBody Loan loan) {
-		loanService.createLoan(loan);
-		return loan;
+	//Loan Request (create loan)
+	@PostMapping("/loans/request")
+	private void requestLoan(@RequestBody Map<String, Object> request) {
+		
 	}
 	
-	//update Loan
-	@PutMapping("/loan")
-	private Loan update(@RequestBody Loan loan) {
-		loanService.updateLoan(loan);
-		return loan;
-	}
 	
-	//Delete Loan
-	@DeleteMapping("/loan/{loanID}")
-	private void deleteLoan(@PathVariable("loanID") int loanID) {
-		loanService.deleteById(loanID);
+	//Loan Disbursal
+	@PutMapping("/loans/disbursal")
+	private void disburseLoan(@RequestBody Map<String, Object> request) {
+		
 	}
 	
 }
