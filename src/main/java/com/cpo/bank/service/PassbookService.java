@@ -37,7 +37,7 @@ public class PassbookService {
 	}
 	
 	//Update Passbook
-	public void updatePassbook(Passbook passbook, int loanID) {
+	public void updatePassbook(Passbook passbook) {
 		passbookRepository.save(passbook);
 	}
 
