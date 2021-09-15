@@ -1,6 +1,7 @@
 package com.cpo.bank.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,35 +22,35 @@ public class TransactionController {
 	TransactionService transactionService;
 	
 	//get All Accounts
-	@GetMapping("/allTransactions")
+	@GetMapping("/transactions/all")
 	private List<Transaction> getAllTransactions(){
 		return transactionService.getAllTransactions();
 	}
 	
 	// get Transaction by ID
-	@GetMapping("/transaction/{transactionID}")
+	@GetMapping("/transactions/id/{transactionID}")
 	private Transaction getTransaction(@PathVariable("transactionID") int transactionID) {
 		return transactionService.getTransactionById(transactionID);
 	}
 	
-	//add Transaction
-	@PostMapping("/transaction")
-	private Transaction saveTransaction(@RequestBody Transaction transaction) {
-		transactionService.createTransaction(transaction);
-		return transaction;
+	@PostMapping("/transactions/slip/credit")
+	private void slipCredit(@RequestBody Map<String, Object> request) {
+		
 	}
 	
-	//update Transaction
-	@PutMapping("/transaction")
-	private Transaction update(@RequestBody Transaction transaction) {
-		transactionService.updateTransaction(transaction);
-		return transaction;
+	@PostMapping("/transactions/slip/debit")
+	private void slipDebit(@RequestBody Map<String, Object> request) {
+		
 	}
 	
-	//Delete Transaction
-	@DeleteMapping("/transaction/{transactionID}")
-	private void deleteTransaction(@PathVariable("transactionID") int transactionID) {
-		transactionService.deleteById(transactionID);
+	@PostMapping("/transactions/check/credit")
+	private void checkCredit(@RequestBody Map<String, Object> request) {
+		
+	}
+	
+	@PostMapping("/transactions/check/debit") 
+	private void checkDebit(@RequestBody Map<String, Object> request) {
+		
 	}
 	
 }
