@@ -37,7 +37,7 @@ public class LoanService {
 	}
 	
 	//Update Loan
-	public void updateLoan(Loan loan, int loanID) {
+	public void updateLoan(Loan loan) {
 		loanRepository.save(loan);
 	}
 
