@@ -20,36 +20,16 @@ public class PassbookController {
 	@Autowired
 	PassbookService passbookService;
 	
-	//get All Accounts
-	@GetMapping("/allPassbook")
-	private List<Passbook> getAllPassbooks(){
-		return passbookService.getAllPassbooks();
+	//Passbook Update
+	@GetMapping("/passbook/update")
+	private void updatePassbook() {
+		
 	}
 	
-	// get Passbook by ID
-	@GetMapping("/passbook/{passbookID}")
-	private Passbook getPassbook(@PathVariable("passbookID") int passbookID) {
-		return passbookService.getPassbookById(passbookID);
-	}
-	
-	//add Passbook
-	@PostMapping("/passbook")
-	private Passbook savePassbook(@RequestBody Passbook passbook) {
-		passbookService.createPassbook(passbook);
-		return passbook;
-	}
-	
-	//update Passbook
-	@PutMapping("/passbook")
-	private Passbook update(@RequestBody Passbook passbook) {
-		passbookService.updatePassbook(passbook);
-		return passbook;
-	}
-	
-	//Delete Passbook
-	@DeleteMapping("/passbook/{passbookID}")
-	private void deletePassbook(@PathVariable("passbookID") int passbookID) {
-		passbookService.deleteById(passbookID);
+	//Account Summary
+	@GetMapping("/passbook/summary")
+	private void passbookSummary() {
+		
 	}
 	
 }
