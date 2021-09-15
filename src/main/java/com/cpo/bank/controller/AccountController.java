@@ -34,20 +34,20 @@ public class AccountController {
 	}
 	
 	//Update Customer Name
-	@PutMapping("/accounts/id/{accountID}/name/{customerName}")
-	private void updateCustomerName(@PathVariable("accountID") long accountID, @PathVariable("customerName") String customerName) {
+	@PutMapping("/accounts/update/name")
+	private void updateCustomerName(@RequestBody Map<String, Object> request) {
 		
 	}
 	
 	//Update Customer Contact
-	@PutMapping("/accounts/id/{accountID}/contact/{customerContact}")
-	private void updateCustomerContact(@PathVariable("accountID") long accountID, @PathVariable("customerContact") String customerContact) {
+	@PutMapping("/accounts/update/contact")
+	private void updateCustomerContact(@RequestBody Map<String, Object> request) {
 		
 	}
 	
 	//Update Customer Address
 	@PutMapping("/accounts/update/address")
-	private void updateCustomerContact(@RequestBody Map<String, Object> request) {
+	private void updateCustomerAddress(@RequestBody Map<String, Object> request) {
 		
 	}
 	
