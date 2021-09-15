@@ -21,20 +21,20 @@ public class TransactionController {
 	TransactionService transactionService;
 	
 	//get All Accounts
-	@GetMapping("/allEmployees")
-	private List<Transaction> getAllLoans(){
+	@GetMapping("/allTransactions")
+	private List<Transaction> getAllTransactions(){
 		return transactionService.getAllTransactions();
 	}
 	
 	// get Transaction by ID
 	@GetMapping("/transaction/{transactionID}")
-	private Transaction getLoan(@PathVariable("transactionID") int transactionID) {
+	private Transaction getTransaction(@PathVariable("transactionID") int transactionID) {
 		return transactionService.getTransactionById(transactionID);
 	}
 	
 	//add Transaction
 	@PostMapping("/transaction")
-	private Transaction saveLoan(@RequestBody Transaction transaction) {
+	private Transaction saveTransaction(@RequestBody Transaction transaction) {
 		transactionService.createTransaction(transaction);
 		return transaction;
 	}
@@ -48,7 +48,7 @@ public class TransactionController {
 	
 	//Delete Transaction
 	@DeleteMapping("/transaction/{transactionID}")
-	private void deleteLoan(@PathVariable("transactionID") int transactionID) {
+	private void deleteTransaction(@PathVariable("transactionID") int transactionID) {
 		transactionService.deleteById(transactionID);
 	}
 	

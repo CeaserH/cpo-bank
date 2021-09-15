@@ -21,7 +21,7 @@ public class AccountService {
 	}
 	
 	//Specific Account
-	public Account getAccountById(int id) {
+	public Account getAccountById(long id) {
 		Optional<Account> account = accountRepository.findById(id);
 		if(account.isPresent()) {
 			return account.get();
@@ -42,7 +42,7 @@ public class AccountService {
 	}
 
 	//Delete Account
-	public void deleteById(int id) {
+	public void deleteById(long id) {
 		accountRepository.deleteById(id);
 	}
 }

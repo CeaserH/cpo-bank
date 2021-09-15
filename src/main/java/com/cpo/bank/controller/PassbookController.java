@@ -28,13 +28,13 @@ public class PassbookController {
 	
 	// get Passbook by ID
 	@GetMapping("/passbook/{passbookID}")
-	private Passbook getLoan(@PathVariable("passbookID") int passbookID) {
+	private Passbook getPassbook(@PathVariable("passbookID") int passbookID) {
 		return passbookService.getPassbookById(passbookID);
 	}
 	
 	//add Passbook
 	@PostMapping("/passbook")
-	private Passbook saveLoan(@RequestBody Passbook passbook) {
+	private Passbook savePassbook(@RequestBody Passbook passbook) {
 		passbookService.createPassbook(passbook);
 		return passbook;
 	}
@@ -48,7 +48,7 @@ public class PassbookController {
 	
 	//Delete Passbook
 	@DeleteMapping("/passbook/{passbookID}")
-	private void deleteLoan(@PathVariable("passbookID") int passbookID) {
+	private void deletePassbook(@PathVariable("passbookID") int passbookID) {
 		passbookService.deleteById(passbookID);
 	}
 	

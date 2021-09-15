@@ -21,20 +21,20 @@ public class SlipController {
 	SlipService slipService;
 	
 	//get All Accounts
-	@GetMapping("/allEmployees")
-	private List<Slip> getAllLoans(){
+	@GetMapping("/allSlips")
+	private List<Slip> getAllSlips(){
 		return slipService.getAllSlips();
 	}
 	
 	// get Slip by ID
 	@GetMapping("/slip/{slipID}")
-	private Slip getLoan(@PathVariable("slipID") int slipID) {
+	private Slip getSlip(@PathVariable("slipID") int slipID) {
 		return slipService.getSlipById(slipID);
 	}
 	
 	//add Slip
 	@PostMapping("/slip")
-	private Slip saveLoan(@RequestBody Slip slip) {
+	private Slip saveSlip(@RequestBody Slip slip) {
 		slipService.createSlip(slip);
 		return slip;
 	}
@@ -48,7 +48,7 @@ public class SlipController {
 	
 	//Delete Slip
 	@DeleteMapping("/slip/{slipID}")
-	private void deleteLoan(@PathVariable("slipID") int slipID) {
+	private void deleteSlip(@PathVariable("slipID") int slipID) {
 		slipService.deleteById(slipID);
 	}
 }

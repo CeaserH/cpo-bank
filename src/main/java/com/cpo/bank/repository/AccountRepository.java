@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cpo.bank.model.Account;
 
-public interface AccountRepository extends CrudRepository<Account, Integer> {
+public interface AccountRepository extends CrudRepository<Account, Long> {
 
 }
