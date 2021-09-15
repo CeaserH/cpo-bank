@@ -3,6 +3,8 @@ package com.cpo.bank.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.security.auth.login.AccountException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +25,7 @@ public class AccountController {
 	
 	// get Account by ID
 	@GetMapping("/accounts/id/{accountID}")
-	private Account getAccount(@PathVariable("accountID")long accountID) {
+	private Account getAccount(@PathVariable("accountID")long accountID) throws AccountException {
 		return accountService.getAccountById(accountID);
 	}
 	
@@ -83,7 +85,7 @@ public class AccountController {
 	
 	//Update Customer Name
 	@PutMapping("/accounts/update/name")
-	private void updateCustomerName(@RequestBody Map<String, Object> request) {
+	private void updateCustomerName(@RequestBody Map<String, Object> request) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -95,13 +97,13 @@ public class AccountController {
 		long id = Long.valueOf((String)request.get("AccountID"));
 		String name = (String)request.get("CustomerNewName");
 		
-		accoutService.updateName(id, name);
+		accountService.updateName(id, name);
 		
 	}
 	
 	//Update Customer Contact
 	@PutMapping("/accounts/update/contact")
-	private void updateCustomerContact(@RequestBody Map<String, Object> request) {
+	private void updateCustomerContact(@RequestBody Map<String, Object> request) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -119,7 +121,7 @@ public class AccountController {
 	
 	//Update Customer Address
 	@PutMapping("/accounts/update/address")
-	private void updateCustomerAddress(@RequestBody Map<String, Object> request) {
+	private void updateCustomerAddress(@RequestBody Map<String, Object> request) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{

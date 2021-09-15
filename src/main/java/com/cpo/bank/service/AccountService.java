@@ -3,6 +3,8 @@ package com.cpo.bank.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.security.auth.login.AccountException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ public class AccountService {
 	
 	@Autowired
 	AccountRepository accountRepository;
+
 	
 	//All Accounts
 	public List<Account> getAllAccounts(){
@@ -21,14 +24,41 @@ public class AccountService {
 	}
 	
 	//Specific Account
-	public Account getAccountById(long id) {
-		Optional<Account> account = accountRepository.findById(id);
+	public Account getAccountById(long accountID) throws AccountException {
+		Optional<Account> account = accountRepository.findById(accountID);
 		if(account.isPresent()) {
 			return account.get();
 		}
-		else {
-			return null;
+		
+//		** removed else add exception for account number not found
+		throw new AccountException("Account not found for account number: " + accountID);
+	}
+	
+	//update customer name
+	public boolean updateName(long id, String name) throws AccountException {
+		if(accountRepository.save(id).equals(id) && accountRepository.save(name).equals(name)) {
+			return true;
 		}
+		throw new AccountException("No such account exists in db.");
+	}
+	
+	//update customer contact
+	
+	public boolean updateContact(long id, String contact) throws AccountException {
+		if(accountRepository.save(id).equals(id) && accountRepository.save(contact).equals(contact)) {
+			return true;
+		}
+		throw new AccountException("No such account exists in db.");
+	}
+	
+	
+	//update customer address 
+	
+	public boolean updateAddress(long id, String address) throws AccountException {
+		if(accountRepository.save(id).equals(id) && accountRepository.save(address).equals(address)) {
+			return true;
+		}
+		throw new AccountException("No such account exists in db.");
 	}
 	
 	//Create Account
@@ -45,4 +75,5 @@ public class AccountService {
 	public void deleteById(long id) {
 		accountRepository.deleteById(id);
 	}
+
 }
