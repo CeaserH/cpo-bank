@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,7 +19,7 @@ import org.hibernate.validator.constraints.Range;
 public class Check {
 	
 	@Id
-	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(nullable=false, length=12)
@@ -26,7 +28,7 @@ public class Check {
 	@Column(nullable=false, length=12)
 	private long beneficiaryAccountID;
 	
-	@Column(nullable=false)
+	@Column
 	@Range(min=10, max=100000)
 	private double amount;
 	
@@ -39,7 +41,7 @@ public class Check {
 	@Column(nullable=false, length=10)
 	private String ifsc;
 	
-	@Column(nullable=false)
+	@Column
 	private Date issueDate;
 	
 	//Connect check to Payee Account Number

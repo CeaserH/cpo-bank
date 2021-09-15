@@ -12,7 +12,7 @@ public class Account {
 	
 	//AccountInfo
 	@Id
-	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long accountID;
 	@Column
 	private double balance;

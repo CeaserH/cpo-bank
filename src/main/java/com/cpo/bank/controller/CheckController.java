@@ -27,7 +27,7 @@ public class CheckController {
 	}
 	
 	//add Check
-	@PostMapping("/check")
+	@PostMapping("/addCheck")
 	private Check addCheck(@RequestBody Check check) {
 		checkService.createCheck(check);
 		return check;
