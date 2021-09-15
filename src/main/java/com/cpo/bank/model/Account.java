@@ -15,9 +15,14 @@ public class Account {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long accountID;
 	@Column
-	private double balance;
+	private double accountBalance;
+	@Column
+	private double accountInterest;
 	@Column
 	private String accountStatus;
+	@Column
+	private String accountType;
+	
 	
 	//AccountID is foreign key
 	@OneToMany(mappedBy="account")
@@ -41,18 +46,26 @@ public class Account {
 	private String customerGender;
 	
 
-	
+	////////////////////////////////////////////
+	/// GETTERS AND SETTERS FOR ACCOUNT INFO ///
+	////////////////////////////////////////////
 	public long getAccountID() {
 		return accountID;
 	}
 	public void setAccountID(long accountID) {
 		this.accountID = accountID;
 	}
-	public double getBalance() {
-		return balance;
+	public double getAccountBalance() {
+		return accountBalance;
 	}
-	public void setBalance(double balance) {
-		this.balance = balance;
+	public void setAccountBalance(double accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+	public double getAccountInterest() {
+		return accountInterest;
+	}
+	public void setAccountInterest(double accountInterest) {
+		this.accountInterest = accountInterest;
 	}
 	public String getAccountStatus() {
 		return accountStatus;
@@ -60,9 +73,23 @@ public class Account {
 	public void setAccountStatus(String accountStatus) {
 		this.accountStatus = accountStatus;
 	}
+	public String getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
 	
 	
-	
+	/////////////////////////////////////////
+	/// GETTERS AND SETTERS FOR RELATIONS ///
+	/////////////////////////////////////////
+	public Set<Loan> getLoans() {
+		return loans;
+	}
+	public void setLoans(Set<Loan> loans) {
+		this.loans = loans;
+	}
 	public Set<Transaction> getTransactions() {
 		return transactions;
 	}
@@ -71,7 +98,9 @@ public class Account {
 	}
 	
 	
-	
+	/////////////////////////////////////////////
+	/// GETTERS AND SETTERS FOR CUSTOMER INFO ///
+	/////////////////////////////////////////////
 	public String getCustomerName() {
 		return customerName;
 	}
