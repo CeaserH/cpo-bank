@@ -37,7 +37,7 @@ public class CheckService {
 	}
 	
 	//Update Check
-	public void updateCheck(Check check, int checkID) {
+	public void updateCheck(Check check) {
 		checkRepository.save(check);
 	}
 
