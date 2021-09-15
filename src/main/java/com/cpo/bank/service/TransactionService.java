@@ -37,7 +37,7 @@ public class TransactionService {
 	}
 	
 	//Update Transaction
-	public void updateTransaction(Transaction transaction, int loanID) {
+	public void updateTransaction(Transaction transaction) {
 		transactionRepository.save(transaction);
 	}
 
