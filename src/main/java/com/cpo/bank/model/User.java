@@ -1,17 +1,19 @@
 package com.cpo.bank.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="user_table")
 public class User {
 
 	
 	@Id
-	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userid;
 	@Column
 	private String firstName;

@@ -1,6 +1,5 @@
 package com.cpo.bank.service;
 
-import java.util.ArrayList;  
 import java.util.List;  
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Service;
@@ -14,9 +13,7 @@ public class UserService {
 	UserRepository userRepository;
 	
 	public List<User> getAllUsers(){
-		List<User> user = new ArrayList<User>();
-		userRepository.findAll().forEach(user1 -> user.add(user1));
-		return user;
+		return (List<User>) userRepository.findAll();
 	}
 	
 	//get specific record by using findById()
@@ -24,8 +21,13 @@ public class UserService {
 		return userRepository.findById(id).get();
 	}
 	
+	//add User
+	public User addUser(User user) {
+		userRepository.save(user);
+		return user;
+	}
 	//save specific record by using save()
-	public void saveOrUpdate(User user) {
+	public void updateUser(User user) {
 		userRepository.save(user);
 	}
 	
