@@ -37,7 +37,7 @@ public class AccountService {
 	}
 	
 	//Update Account
-	public void updateAccount(Account account, int accountID) {
+	public void updateAccount(Account account) {
 		accountRepository.save(account);
 	}
 

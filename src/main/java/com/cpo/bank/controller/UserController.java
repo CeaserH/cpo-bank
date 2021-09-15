@@ -33,6 +33,12 @@ public class UserController {
 	private User getUser(@PathVariable("userid") int userid) {
 		return userService.getUserById(userid);
 	}
+	//add User
+	@PostMapping("/user")
+	private User saveUser(@RequestBody User user) {
+		userService.addUser(user);
+		return user;
+	}
 	
 	
 	// delete user by id
@@ -40,14 +46,9 @@ public class UserController {
 	private void deleteUser(@PathVariable("userid") int userid) {
 		userService.delete(userid);
 	}
+
 	
-	// post user details
 	
-	@PostMapping("/user")
-	private User saveUser(@RequestBody User user) {
-		userService.addUser(user);
-		return user;
-	}
 	
 	// update a user details
 	@PutMapping("/user")

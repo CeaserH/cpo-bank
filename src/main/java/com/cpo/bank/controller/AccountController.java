@@ -1,7 +1,13 @@
 package com.cpo.bank.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +20,35 @@ public class AccountController {
 	@Autowired
 	AccountService accountService;
 	
-	//Create an account
-	@PostMapping("/account/create")
-	private long createAccount(@RequestBody Account account) {
-		accountService.createAccount(account);
-		return account.getAccountID();
+	//get All Accounts
+	@GetMapping("/allAccounts")
+	private List<Account> getAllAccounts(){
+		return accountService.getAllAccounts();
 	}
 	
+	// get Account by ID
+	@GetMapping("/account/{accountID}")
+	private Account getAccount(@PathVariable("accountID") int accountID) {
+		return accountService.getAccountById(accountID);
+	}
+	
+	//add Account
+	@PostMapping("/account")
+	private Account saveAccount(@RequestBody Account account) {
+		accountService.createAccount(account);
+		return account;
+	}
+	
+	//update Account
+	@PutMapping("/account")
+	private Account update(@RequestBody Account account) {
+		accountService.updateAccount(account);
+		return account;
+	}
+	
+	//Delete Account
+	@DeleteMapping("/account/{accountID}")
+	private void deleteAccount(@PathVariable("accountID") int accountID) {
+		accountService.deleteById(accountID);
+	}
 }
