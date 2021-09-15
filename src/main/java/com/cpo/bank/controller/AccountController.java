@@ -1,5 +1,6 @@
 package com.cpo.bank.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +71,7 @@ public class AccountController {
 		account.setCustomerName((String)request.get("CustomerName"));
 		account.setCustomerContact((String)request.get("CustomerContact"));
 		//account.setCustomerSSN((String)request.get("CustomerSSN"));
-		account.setCustomerDOB((String)request.get("CustomerDOB"));
+		account.setCustomerDOB((Date)request.get("CustomerDOB"));
 		account.setCustomerGender((String)request.get("CustomerGender"));
 		
 		//Account

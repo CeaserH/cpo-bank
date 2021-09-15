@@ -3,6 +3,8 @@ package com.cpo.bank.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,65 +16,47 @@ import org.hibernate.validator.constraints.Range;
 @Table(name="slip_table")
 public class Slip {
 	
+	//SlipInfo
 	@Id
 	@Column
-	private int id;
-	
-	@Column(nullable=false, length=4)
-	private long transactionID;
-	
-	@Column(nullable=false)
-	@Range(min=10, max=100000)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long slipID;
+	@Column
 	private double amount;
 	
+	/* foreigh key???
+	@Column(nullable=false, length=4)
+	private long transactionID;
+	*/
+
 	//Connect Slip to Transaction ID
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="transactionID", insertable=false, updatable=false)
 	private Transaction transaction;
 	
-	public Slip() {
-		
-	}
+	///////////////
+	/// METHODS ///
+	///////////////
+	
+	public Slip() {}
 
-	public Slip(int id, long transactionID, double amount) {
-		super();
-		this.id = id;
-		this.transactionID = transactionID;
-		this.amount = amount;
+	public long getSlipID() {
+		return slipID;
 	}
-
-	public int getId() {
-		return id;
+	public void setSlipID(long slipID) {
+		this.slipID = slipID;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Transaction getTransaction() {
-		return transaction;
-	}
-
-	public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
-	}
-
-	public long getTransactionID() {
-		return transactionID;
-	}
-
-	public void setTransactionID(long transactionID) {
-		this.transactionID = transactionID;
-	}
-
 	public double getAmount() {
 		return amount;
 	}
-
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	
-	
+	public Transaction getTransaction() {
+		return transaction;
+	}
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}
 
 }

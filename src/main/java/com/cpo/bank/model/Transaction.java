@@ -8,25 +8,26 @@ import javax.persistence.*;
 @Table(name="transaction_table")
 public class Transaction {
 
+	//TransactionInfo
 	@Id
 	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long transactionID;
+	@Column
+	private String transactionType; //Debit or Credit
+	@Column
+	private String transactionMethod; //Slip or Check
+	@Column
+	private double amount;
 	
-		//Foreign Key
+	//Foreign Key
 	@ManyToOne
 	@JoinColumn(name="accountID", nullable=false)
 	private Account account;
 	
-	//Debit or Credit
-	@Column
-	private String transactionType;
-
-	
-	//Slip or Check
-	private String transactionMethod;
-	
-	@Column
-	private double amount;
+	///////////////
+	/// METHODS ///
+	///////////////
 	
 	public Transaction() {
 		
