@@ -22,7 +22,7 @@ public class Check {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable=false, length=12)
+	@Column(length=12)
 	private long payeeAccountID;
 	
 	@Column(nullable=false, length=12)
