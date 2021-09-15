@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table
+@Table(name="account_table")
 public class Account {
 	
 	//AccountInfo

@@ -22,7 +22,7 @@ public class UserController {
 	
 	// retrieve all user data
 	
-	@GetMapping("/user")
+	@GetMapping("/allUsers")
 	private List<User> getAllUsers(){
 		return userService.getAllUsers();
 	}
@@ -44,15 +44,15 @@ public class UserController {
 	// post user details
 	
 	@PostMapping("/user")
-	private int saveUser(@RequestBody User user) {
-		userService.saveOrUpdate(user);
-		return (int) user.getUserId();
+	private User saveUser(@RequestBody User user) {
+		userService.addUser(user);
+		return user;
 	}
 	
 	// update a user details
 	@PutMapping("/user")
 	private User update(@RequestBody User user) {
-		userService.saveOrUpdate(user);
+		userService.updateUser(user);
 		return user;
 	}
 	

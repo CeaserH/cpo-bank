@@ -5,7 +5,7 @@ import javax.persistence.*;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table
+@Table(name="loan_table")
 public class Loan {
 	
 	@Id

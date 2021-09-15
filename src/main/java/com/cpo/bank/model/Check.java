@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -12,8 +13,12 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table
+@Table(name="check_table")
 public class Check {
+	
+	@Id
+	@Column
+	private int id;
 	
 	@Column(nullable=false, length=12)
 	private long payeeAccountID;
@@ -39,17 +44,17 @@ public class Check {
 	
 	//Connect check to Payee Account Number
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="accountID")
+	@JoinColumn(name="accountID", insertable=false, updatable=false)
 	private Account payeeAccount;
 	
 	//Connect check to Beneficiary Account Number
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="accountID")
+	@JoinColumn(name="accountID", insertable=false, updatable=false)
 	private Account beneficiaryAccount;
 	
 	//Connect check to Transaction
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="transactionID")
+	@JoinColumn(name="transactionID", insertable=false, updatable=false)
 	private Transaction checkTransaction;
 	
 	
@@ -57,9 +62,10 @@ public class Check {
 		
 	}
 
-	public Check(long payeeAccountID, long beneficiaryAccountID, double amount, int checkNumber, String bankName,
+	public Check(int id, long payeeAccountID, long beneficiaryAccountID, double amount, int checkNumber, String bankName,
 			String ifsc, Date issueDate) {
 		super();
+		this.id = id;
 		this.payeeAccountID = payeeAccountID;
 		this.beneficiaryAccountID = beneficiaryAccountID;
 		this.amount = amount;
@@ -67,6 +73,22 @@ public class Check {
 		this.bankName = bankName;
 		this.ifsc = ifsc;
 		this.issueDate = issueDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Transaction getCheckTransaction() {
+		return checkTransaction;
+	}
+
+	public void setCheckTransaction(Transaction checkTransaction) {
+		this.checkTransaction = checkTransaction;
 	}
 
 	public long getPayeeAccountID() {

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table
+@Table(name="transaction_table")
 public class Transaction {
 
 	@Id

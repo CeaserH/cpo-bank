@@ -3,6 +3,7 @@ package com.cpo.bank.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -10,8 +11,12 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table
+@Table(name="slip_table")
 public class Slip {
+	
+	@Id
+	@Column
+	private int id;
 	
 	@Column(nullable=false, length=4)
 	private long transactionID;
@@ -22,17 +27,34 @@ public class Slip {
 	
 	//Connect Slip to Transaction ID
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="transactionID")
+	@JoinColumn(name="transactionID", insertable=false, updatable=false)
 	private Transaction transaction;
 	
 	public Slip() {
 		
 	}
 
-	public Slip(long transactionID, double amount) {
+	public Slip(int id, long transactionID, double amount) {
 		super();
+		this.id = id;
 		this.transactionID = transactionID;
 		this.amount = amount;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Transaction getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
 	}
 
 	public long getTransactionID() {

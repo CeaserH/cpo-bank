@@ -1,7 +1,17 @@
 package com.cpo.bank.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee_table")
 public class Employee {
 
+	@Id
+	@Column
+	private int id;
 	private String userName;
 	private String password;
 	
