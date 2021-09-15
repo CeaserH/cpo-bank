@@ -37,7 +37,7 @@ public class SlipService {
 	}
 	
 	//Update Slip
-	public void updateSlip(Slip slip, int loanID) {
+	public void updateSlip(Slip slip) {
 		slipRepository.save(slip);
 	}
 
