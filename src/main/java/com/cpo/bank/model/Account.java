@@ -1,6 +1,7 @@
 package com.cpo.bank.model;
 
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class Account {
 	
 	//AccountInfo
 	@Id
+	@Column
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long accountID;
 	@Column
@@ -25,6 +27,7 @@ public class Account {
 	
 	
 	//AccountID is foreign key
+	//are these necessary? can they exist only in linked classes?
 	@OneToMany(mappedBy="account")
 	private Set<Transaction> transactions;
 	
@@ -41,7 +44,7 @@ public class Account {
 	@Column
 	private int customerSSN;
 	@Column
-	private String customerDOB; //change to date type
+	private Date customerDOB; //change to date type
 	@Column
 	private String customerGender;
 	
@@ -125,10 +128,10 @@ public class Account {
 	public void setCustomerSSN(int customerSSN) {
 		this.customerSSN = customerSSN;
 	}
-	public String getCustomerDOB() {
+	public Date getCustomerDOB() {
 		return customerDOB;
 	}
-	public void setCustomerDOB(String customerDOB) {
+	public void setCustomerDOB(Date customerDOB) {
 		this.customerDOB = customerDOB;
 	}
 	public String getCustomerGender() {
