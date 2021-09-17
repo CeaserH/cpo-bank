@@ -36,21 +36,20 @@ public class AccountController {
 		/*
 			REQUEST STRUCTURE:
 			{
-				AddressLine1
-				AddressLine2
-				City
-				State
-				Country
-				ZipCode
-				CustomerName
-				CustomerContact
-				CustomerSSN
-				CustomerDOB
-				CustomerGender
-				AccountType
-				Balance
-				Interest
-				BranchID?
+				AddressLine1		: String
+				AddressLine2		: String
+				City				: String
+				State				: String
+				Country				: String
+				ZipCode				: String
+				CustomerName		: String
+				CustomerContact		: String
+				CustomerSSN			: String (Integer)
+				CustomerDOB			: String (Long)
+				CustomerGender		: String
+				AccountType			: String
+				Balance				: String (Double)
+				Interest			: String (Double)
 			}
 		 */
 		
@@ -70,15 +69,15 @@ public class AccountController {
 		//Customer
 		account.setCustomerName((String)request.get("CustomerName"));
 		account.setCustomerContact((String)request.get("CustomerContact"));
-		//account.setCustomerSSN((String)request.get("CustomerSSN"));
-		account.setCustomerDOB((Date)request.get("CustomerDOB"));
+		account.setCustomerSSN(Integer.valueOf((String)request.get("CustomerSSN")));
+		account.setCustomerDOB(new Date(Long.valueOf((String)request.get("CustomerDOB"))));
 		account.setCustomerGender((String)request.get("CustomerGender"));
 		
 		//Account
 		account.setAccountType((String)request.get("AccountType"));
 		account.setAccountStatus("Open");
-		//account.setAccountBalance(request.get("Balance"));
-		//account.setAccountInterest(request.get("Interest"));
+		account.setAccountBalance(Double.valueOf((String)request.get("Balance")));
+		account.setAccountInterest(Double.valueOf((String)request.get("Interest")));
 		
 		accountService.createAccount(account);
 		

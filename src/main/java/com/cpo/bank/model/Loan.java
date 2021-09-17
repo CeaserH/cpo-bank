@@ -28,10 +28,12 @@ public class Loan {
 	@Column
 	private String loanType;
 	
+	/*
 	//Foreign Key
 	@ManyToOne
 	@JoinColumn(name="accountID", nullable=false)
 	private Account account;
+	*/
 	
 	public Loan() {}
 
@@ -41,12 +43,14 @@ public class Loan {
 	public void setLoanID(long loanID) {
 		this.loanID = loanID;
 	}
+	/*
 	public Account getAccount() {
 		return account;
 	}
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+	*/
 	public long getAccountID() {
 		return accountID;
 	}
