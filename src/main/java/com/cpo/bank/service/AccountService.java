@@ -72,8 +72,10 @@ public class AccountService {
 	}
 
 	//Delete Account
-	public void deleteById(long id) {
-		accountRepository.deleteById(id);
+	public void deleteById(long accountID) {
+		accountRepository.deleteById((long) accountID);
 	}
+
+
 
 }

@@ -151,7 +151,7 @@ public class AccountController {
 	
 	//Delete Account
 	@DeleteMapping("/accounts/delete/{accountID}")
-	private void deleteAccount(@PathVariable("accountID") int accountID) {
+	private void deleteAccount(@PathVariable("accountID") long accountID) {
 		accountService.deleteById(accountID);
 	}
 	
