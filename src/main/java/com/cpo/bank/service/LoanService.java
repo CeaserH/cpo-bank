@@ -31,19 +31,12 @@ public class LoanService {
 		}
 	}
 	
-	//Create Loan
-	public Loan createLoan(Loan loan) {
-		return loanRepository.save(loan);
+	public void createLoan(Loan loan) {
+		
 	}
 	
-	//Update Loan
-	public void updateLoan(Loan loan) {
-		loanRepository.save(loan);
-	}
-
-	//Delete Loan
-	public void deleteById(int id) {
-		loanRepository.deleteById(id);
+	public void disburse(long loanID, String action) {
+		
 	}
 
 }

@@ -14,6 +14,8 @@ public class Loan {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long loanID;
 	@Column
+	private long accountID;
+	@Column
 	private double amount;
 	@Column
 	private int tenure;
@@ -44,6 +46,12 @@ public class Loan {
 	}
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+	public long getAccountID() {
+		return accountID;
+	}
+	public void setAccountID(long accountID) {
+		this.accountID = accountID;
 	}
 	public double getAmount() {
 		return amount;
