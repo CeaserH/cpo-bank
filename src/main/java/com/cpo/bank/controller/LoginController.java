@@ -21,8 +21,8 @@ public class LoginController {
 		/*
 			REQUEST FORMAT
 			{
-				Username
-				Password
+				Username : String
+				Password : String
 			}
 		 */
 		

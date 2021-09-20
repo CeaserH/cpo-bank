@@ -103,12 +103,12 @@ public class TransactionController {
 		/*
 			REQUEST FORMAT
 			{
-				AccountNumber (Beneficiary)
-				Amount
-				CheckNumber
-				BankNumber
-				IFSC
-				IssueDate
+				AccountNumber (Beneficiary)	: String (Long)
+				Amount						: String (Double)
+				CheckNumber					: String (Integer)
+				BankNumber					: String
+				IFSC						: String
+				IssueDate					: String (Long)
 			}
 		 */
 		
