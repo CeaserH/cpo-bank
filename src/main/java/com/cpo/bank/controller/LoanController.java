@@ -35,12 +35,50 @@ public class LoanController {
 	@PostMapping("/loans/request")
 	private void requestLoan(@RequestBody Map<String, Object> request) {
 		
+		/*
+			REQUEST FORMAT
+			{
+				AccountID
+				Amount
+				Tenure
+				CreditScore
+				RateOfInterest
+				LoanStatus
+				LoanType
+			}
+		 */
+		
+		Loan loan = new Loan();
+		
+		loan.setAccountID(Long.valueOf((String)request.get("AccountID")));
+		loan.setAmount(Double.valueOf((String)request.get("Amount")));
+		loan.setTenure(Integer.valueOf((String)request.get("Tenure")));
+		loan.setCreditScore(Integer.valueOf((String)request.get("CreditScore")));
+		loan.setRateOfInterest(Integer.valueOf((String)request.get("RateOfInteres")));
+		loan.setLoanStatus((String)request.get("LoanStatus"));
+		loan.setLoanType((String)request.get("LoanType"));
+		
+		loanService.createLoan(loan);
+		
 	}
 	
 	
 	//Loan Disbursal
 	@PutMapping("/loans/disbursal")
 	private void disburseLoan(@RequestBody Map<String, Object> request) {
+		
+		/*
+			REQUEST FORMAT
+			{
+				LoanID
+				Action
+			}
+		 */
+		
+		Long loanID = Long.valueOf((String)request.get("LoanID"));
+		String action = (String) request.get("Action");
+		
+		loanService.disburse(loanID, action);
 		
 	}
 	

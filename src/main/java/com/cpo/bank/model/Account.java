@@ -31,8 +31,10 @@ public class Account {
 	@OneToMany(mappedBy="account")
 	private Set<Transaction> transactions;
 	
+	/*
 	@OneToMany(mappedBy="account")
 	private Set<Loan> loans;
+	*/
 	
 	//CustomerInfo
 	@Column
@@ -87,12 +89,14 @@ public class Account {
 	/////////////////////////////////////////
 	/// GETTERS AND SETTERS FOR RELATIONS ///
 	/////////////////////////////////////////
+	/*
 	public Set<Loan> getLoans() {
 		return loans;
 	}
 	public void setLoans(Set<Loan> loans) {
 		this.loans = loans;
 	}
+	*/
 	public Set<Transaction> getTransactions() {
 		return transactions;
 	}

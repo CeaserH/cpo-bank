@@ -1,5 +1,6 @@
 package com.cpo.bank.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -73,19 +74,25 @@ public class TransactionController {
 		/*
 			REQUEST FORMAT
 			{
-				PayeeAccountNumber
-				BeneficiaryAccountNumber
-				Amount
-				CheckNumber
-				BankNumber
-				IFSC
-				IssueDate
+				PayeeAccountNumber			: String (Long)
+				BeneficiaryAccountNumber	: String (Long)
+				Amount						: String (Double)
+				CheckNumber					: String (Integer)
+				BankName					: String
+				IFSC						: String
+				IssueDate					: String (Long)
 			}
 		 */
 		
 		Check check = new Check();
 		
-		//need to set values in check
+		check.setPayeeAccountID(Long.valueOf((String)request.get("PayeeAccountNumber")));
+		check.setBeneficiaryAccountID(Long.valueOf((String)request.get("BeneficiaryAccountNumber")));
+		check.setAmount(Double.valueOf((String)request.get("Amount")));
+		check.setCheckNumber(Integer.valueOf((String)request.get("CheckNumber")));
+		check.setBankName((String)request.get("BankName"));
+		check.setIfsc((String)request.get("IFSC"));
+		check.setIssueDate(new Date(Long.valueOf((String)request.get("IssueDate"))));
 		
 		transactionService.checkCredit(check);
 		
@@ -107,7 +114,12 @@ public class TransactionController {
 		
 		Check check = new Check();
 		
-		//need to set values in check
+		check.setBeneficiaryAccountID(Long.valueOf((String)request.get("AccountNumber")));
+		check.setAmount(Double.valueOf((String)request.get("Amount")));
+		check.setCheckNumber(Integer.valueOf((String)request.get("CheckNumber")));
+		check.setBankName((String)request.get("BankName"));
+		check.setIfsc((String)request.get("IFSC"));
+		check.setIssueDate(new Date(Long.valueOf((String)request.get("IssueDate"))));
 		
 		transactionService.checkDebit(check);
 	

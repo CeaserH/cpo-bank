@@ -11,4 +11,8 @@ public class LoginService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
+	public void login(String username, String password) {
+		
+	}
+	
 }
