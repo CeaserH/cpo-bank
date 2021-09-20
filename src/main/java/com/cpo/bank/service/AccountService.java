@@ -37,36 +37,36 @@ public class AccountService {
 	
 //	update customer name
 	
-	public void updateName(Long id, String name) throws AccountException {
-		if(accountRepository.findById(id) != null) {
-		Account tempAcc = accountRepository.findById(id).get();
+	public void updateName(Long accountID, String name) throws AccountException {
+//		if(accountRepository.findById(accountID) != null) {
+		Account tempAcc = accountRepository.findById(accountID).get();
 		tempAcc.setCustomerName(name);
 		accountRepository.save(tempAcc);
-		}
-		throw new AccountException("No such acocunt exists in db.");
+//		}
+//		throw new AccountException("No such acocunt exists in db.");
 	}
 //	
 //	//update customer contact
 	
 	public void updateContact(long id, String contact) throws AccountException {
-		if(accountRepository.findById(id) != null) {
+//		if(accountRepository.findById(id) != null) {
 			Account tempAcc = accountRepository.findById(id).get();
 			tempAcc.setCustomerContact(contact);
 			accountRepository.save(tempAcc);
-		}
-		throw new AccountException("No such account exists in db.");
+//		}
+//		throw new AccountException("No such account exists in db.");
 	}
 //	
 //	
 //	//update customer address 
 //	
 	public void updateAddress(long id, String address) throws AccountException {
-		if(accountRepository.findById(id) != null) {
+//		if(accountRepository.findById(id) != null) {
 			Account tempAcc = accountRepository.findById(id).get();
 			tempAcc.setCustomerAddress(address);
 			accountRepository.save(tempAcc);
-		}
-		throw new AccountException("No such account exists in db.");
+//		}
+//		throw new AccountException("No such account exists in db.");
 	}
 	
 	//Create Account

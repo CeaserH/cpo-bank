@@ -85,8 +85,9 @@ public class AccountController {
 	}
 	
 	//Update Customer Name
-	@PutMapping("/accounts/update/name")
-	private void updateCustomerName(@RequestBody Map<String, Object> request) throws AccountException {
+	@PutMapping("/accounts/update/name/{id}")
+	private void updateCustomerName(@PathVariable("id") long id, @RequestBody String name) throws AccountException {
+		
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -95,15 +96,14 @@ public class AccountController {
 		}
 		 */
 		
-		long id = Long.valueOf((String)request.get("AccountID"));
-		String name = (String)request.get("CustomerNewName");
-		
+//		long id = Long.valueOf((String)request.get("AccountID"));
+//		String name = (String)request.get("CustomerNewName");
 		accountService.updateName(id, name);
 	}
 	
 	//Update Customer Contact
-	@PutMapping("/accounts/update/contact")
-	private void updateCustomerContact(@RequestBody Map<String, Object> request) throws AccountException {
+	@PutMapping("/accounts/update/contact/{id}")
+	private void updateCustomerContact(@PathVariable("id")long id, @RequestBody String contact) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -112,16 +112,16 @@ public class AccountController {
 		}
 		 */
 		
-		long id = Long.valueOf((String)request.get("AccountID"));
-		String contact = (String)request.get("CustomerNewContact");
-		
+//		long id = Long.valueOf((String)request.get("AccountID"));
+//		String contact = (String)request.get("CustomerNewContact");
+			
 		accountService.updateContact(id, contact);
 		
 	}
 	
 	//Update Customer Address
-	@PutMapping("/accounts/update/address")
-	private void updateCustomerAddress(@RequestBody Map<String, Object> request) throws AccountException {
+	@PutMapping("/accounts/update/address/{id}")
+	private void updateCustomerAddress(@PathVariable("id")long id, @RequestBody String address) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -135,15 +135,15 @@ public class AccountController {
 		}
 		 */
 		
-		long id = Long.valueOf((String)request.get("AccountID"));
-		
-		String address = "";
-		address += request.get("AddressLine1") + " ";
-		address += request.get("AddressLine2") + " ";
-		address += request.get("City") + ", ";
-		address += request.get("State") +  " ";
-		address += request.get("ZipCode") + " ";
-		address += request.get("Country");
+//		long id = Long.valueOf((String)request.get("AccountID"));
+//		
+//		String address = "";
+//		address += request.get("AddressLine1") + " ";
+//		address += request.get("AddressLine2") + " ";
+//		address += request.get("City") + ", ";
+//		address += request.get("State") +  " ";
+//		address += request.get("ZipCode") + " ";
+//		address += request.get("Country");
 
 		accountService.updateAddress(id, address);
 		
