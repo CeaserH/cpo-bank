@@ -36,21 +36,20 @@ public class AccountController {
 		/*
 			REQUEST STRUCTURE:
 			{
-				AddressLine1
-				AddressLine2
-				City
-				State
-				Country
-				ZipCode
-				CustomerName
-				CustomerContact
-				CustomerSSN
-				CustomerDOB
-				CustomerGender
-				AccountType
-				Balance
-				Interest
-				BranchID?
+				AddressLine1		: String
+				AddressLine2		: String
+				City				: String
+				State				: String
+				Country				: String
+				ZipCode				: String
+				CustomerName		: String
+				CustomerContact		: String
+				CustomerSSN			: String (Integer)
+				CustomerDOB			: String (Long)
+				CustomerGender		: String
+				AccountType			: String
+				Balance				: String (Double)
+				Interest			: String (Double)
 			}
 		 */
 		
@@ -70,15 +69,15 @@ public class AccountController {
 		//Customer
 		account.setCustomerName((String)request.get("CustomerName"));
 		account.setCustomerContact((String)request.get("CustomerContact"));
-		//account.setCustomerSSN((String)request.get("CustomerSSN"));
-		account.setCustomerDOB((String)request.get("CustomerDOB"));
+		account.setCustomerSSN(Integer.valueOf((String)request.get("CustomerSSN")));
+		account.setCustomerDOB(new Date(Long.valueOf((String)request.get("CustomerDOB"))));
 		account.setCustomerGender((String)request.get("CustomerGender"));
 		
 		//Account
 		account.setAccountType((String)request.get("AccountType"));
 		account.setAccountStatus("Open");
-//		account.setAccountBalance(request.get("Balance"));
-		//account.setAccountInterest(request.get("Interest"));
+		account.setAccountBalance(Double.valueOf((String)request.get("Balance")));
+		account.setAccountInterest(Double.valueOf((String)request.get("Interest")));
 		
 		accountService.createAccount(account);
 		
@@ -87,7 +86,6 @@ public class AccountController {
 	//Update Customer Name
 	@PutMapping("/accounts/update/name/{id}")
 	private void updateCustomerName(@PathVariable("id") long id, @RequestBody String name) throws AccountException {
-		
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -96,14 +94,13 @@ public class AccountController {
 		}
 		 */
 		
-//		long id = Long.valueOf((String)request.get("AccountID"));
-//		String name = (String)request.get("CustomerNewName");
 		accountService.updateName(id, name);
+		
 	}
 	
 	//Update Customer Contact
 	@PutMapping("/accounts/update/contact/{id}")
-	private void updateCustomerContact(@PathVariable("id")long id, @RequestBody String contact) throws AccountException {
+	private void updateCustomerContact(@PathVariable("id") long id, @RequestBody String contact) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -112,16 +109,13 @@ public class AccountController {
 		}
 		 */
 		
-//		long id = Long.valueOf((String)request.get("AccountID"));
-//		String contact = (String)request.get("CustomerNewContact");
-			
 		accountService.updateContact(id, contact);
 		
 	}
 	
 	//Update Customer Address
 	@PutMapping("/accounts/update/address/{id}")
-	private void updateCustomerAddress(@PathVariable("id")long id, @RequestBody String address) throws AccountException {
+	private void updateCustomerAddress(@PathVariable("id") long id, @RequestBody Map<String, Object> request) throws AccountException {
 		/*
 		REQUEST STRUCTURE:
 		{
@@ -135,15 +129,15 @@ public class AccountController {
 		}
 		 */
 		
-//		long id = Long.valueOf((String)request.get("AccountID"));
-//		
-//		String address = "";
-//		address += request.get("AddressLine1") + " ";
-//		address += request.get("AddressLine2") + " ";
-//		address += request.get("City") + ", ";
-//		address += request.get("State") +  " ";
-//		address += request.get("ZipCode") + " ";
-//		address += request.get("Country");
+		//long id = Long.valueOf((String)request.get("AccountID"));
+		
+		String address = "";
+		address += request.get("AddressLine1") + " ";
+		address += request.get("AddressLine2") + " ";
+		address += request.get("City") + ", ";
+		address += request.get("State") +  " ";
+		address += request.get("ZipCode") + " ";
+		address += request.get("Country");
 
 		accountService.updateAddress(id, address);
 		

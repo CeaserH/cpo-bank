@@ -46,7 +46,7 @@ public class Account {
 	@Column
 	private int customerSSN;
 	@Column
-	private String customerDOB; //change to date type
+	private Date customerDOB;
 	@Column
 	private String customerGender;
 	
@@ -132,10 +132,10 @@ public class Account {
 	public void setCustomerSSN(int customerSSN) {
 		this.customerSSN = customerSSN;
 	}
-	public String getCustomerDOB() {
+	public Date getCustomerDOB() {
 		return customerDOB;
 	}
-	public void setCustomerDOB(String customerDOB) {
+	public void setCustomerDOB(Date customerDOB) {
 		this.customerDOB = customerDOB;
 	}
 	public String getCustomerGender() {
