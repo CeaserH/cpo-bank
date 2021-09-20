@@ -1,6 +1,7 @@
 package com.cpo.bank.service;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.security.auth.login.AccountException;
@@ -34,29 +35,36 @@ public class AccountService {
 		throw new AccountException("Account not found for account number: " + accountID);
 	}
 	
-	//update customer name
-	public boolean updateName(long id, String name) throws AccountException {
-		if(accountRepository.save(id).equals(id) && accountRepository.save(name).equals(name)) {
-			return true;
+//	update customer name
+	
+	public void updateName(Long id, String name) throws AccountException {
+		if(accountRepository.findById(id) != null) {
+		Account tempAcc = accountRepository.findById(id).get();
+		tempAcc.setCustomerName(name);
+		accountRepository.save(tempAcc);
+		}
+		throw new AccountException("No such acocunt exists in db.");
+	}
+//	
+//	//update customer contact
+	
+	public void updateContact(long id, String contact) throws AccountException {
+		if(accountRepository.findById(id) != null) {
+			Account tempAcc = accountRepository.findById(id).get();
+			tempAcc.setCustomerContact(contact);
+			accountRepository.save(tempAcc);
 		}
 		throw new AccountException("No such account exists in db.");
 	}
-	
-	//update customer contact
-	
-	public boolean updateContact(long id, String contact) throws AccountException {
-		if(accountRepository.save(id).equals(id) && accountRepository.save(contact).equals(contact)) {
-			return true;
-		}
-		throw new AccountException("No such account exists in db.");
-	}
-	
-	
-	//update customer address 
-	
-	public boolean updateAddress(long id, String address) throws AccountException {
-		if(accountRepository.save(id).equals(id) && accountRepository.save(address).equals(address)) {
-			return true;
+//	
+//	
+//	//update customer address 
+//	
+	public void updateAddress(long id, String address) throws AccountException {
+		if(accountRepository.findById(id) != null) {
+			Account tempAcc = accountRepository.findById(id).get();
+			tempAcc.setCustomerAddress(address);
+			accountRepository.save(tempAcc);
 		}
 		throw new AccountException("No such account exists in db.");
 	}
@@ -72,6 +80,9 @@ public class AccountService {
 	}
 
 	//Delete Account
+	
+	//set status closed
+	
 	public void deleteById(long accountID) {
 		accountRepository.deleteById((long) accountID);
 	}

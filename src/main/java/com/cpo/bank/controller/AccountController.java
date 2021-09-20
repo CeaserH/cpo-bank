@@ -71,13 +71,13 @@ public class AccountController {
 		account.setCustomerName((String)request.get("CustomerName"));
 		account.setCustomerContact((String)request.get("CustomerContact"));
 		//account.setCustomerSSN((String)request.get("CustomerSSN"));
-		account.setCustomerDOB((Date)request.get("CustomerDOB"));
+		account.setCustomerDOB((String)request.get("CustomerDOB"));
 		account.setCustomerGender((String)request.get("CustomerGender"));
 		
 		//Account
 		account.setAccountType((String)request.get("AccountType"));
 		account.setAccountStatus("Open");
-		//account.setAccountBalance(request.get("Balance"));
+//		account.setAccountBalance(request.get("Balance"));
 		//account.setAccountInterest(request.get("Interest"));
 		
 		accountService.createAccount(account);
@@ -99,7 +99,6 @@ public class AccountController {
 		String name = (String)request.get("CustomerNewName");
 		
 		accountService.updateName(id, name);
-		
 	}
 	
 	//Update Customer Contact
